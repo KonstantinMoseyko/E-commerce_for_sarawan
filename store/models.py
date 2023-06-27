@@ -17,9 +17,10 @@ class Category(models.Model):
 
 class SubCategory(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    name = models.CharField(verbose_name='Имя', max_length=256, unique=True)
+    name = models.CharField(verbose_name='имя', max_length=256, unique=True)
     slug = models.SlugField(verbose_name='slug-имя', max_length=256, null=False, unique=True)
     image = models.ImageField(upload_to='subcategory_img', blank=True)
+    description = models.TextField(verbose_name="описание подкатегории", blank=True, null=True)
 
     def __str__(self):
         return self.name

@@ -4,16 +4,16 @@
 {% block content %}
     <div class="container-fluid">
         <div class="media">
-            <img src="/media/{{ category_object.image }}"
+            <img src="/media/{{ subcategory_object.image }}"
                  class="img-fluid mt-2 col-lg-offset-4" alt="Responsive image"
                  style="height: 300px">
             <div class="ml-1 container-fluid">
                 <div class="align-content-lg-between text-center">
-                <h1 class="mt-3 ml-3">{{ category_object.name|title }}</h1>
+                <h1 class="mt-3 ml-3">{{ subcategory_object.name|title }}</h1>
                 <br>
                 </div>
                 <div class="mt-3">
-                <p>{{ category_object.description|title }}</p>
+                <p>{{ subcategory_object.description|title }}</p>
                 </div>
                 <br>
             </div>
@@ -22,14 +22,14 @@
 
     <div class="container mt-3">
         <div class="row centered">
-            {% for subcategory in subcategories %}
+            {% for product in products %}
                 <div class="card  col-lg-4" style="width: 16rem;
                 display: flex">
-                    <img src="/media/{{ subcategory.image }}"
+                    <img src="/media/{{ product.image }}"
                          class="card-img-top filters__img" alt="...">
                     <div class="card-body fa fa-align-justify">
-                        <h5 class="card-title">{{ subcategory.name|title }}</h5>
-                        <a href="{% url 'store:subcategory_detail' subcategory.slug %}"
+                        <h5 class="card-title">{{ product.name|title }}</h5>
+                        <a href="{% url 'store:product_detail' product.slug %}"
                            class="btn btn-danger">Выбрать</a>
                     </div>
                 </div>

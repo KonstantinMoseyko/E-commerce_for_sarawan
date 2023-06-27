@@ -2,11 +2,9 @@
 {% load static %}
 
 {% block content %}
-
     <div class="container mt-3">
         <div class="row centered">
-            {% for category in object_list %}
-
+            {% for category in categories %}
                 <div class="card  col-lg-4" style="width: 16rem;
                 display: flex">
                     <img src="/media/{{ category.image }}"
@@ -14,10 +12,9 @@
                     <div class="card-body fa fa-align-justify">
                         <h5 class="card-title">{{ category.name|title }}</h5>
                         <a href="{% url 'store:category_detail' category.slug %}"
-                           class="btn btn-danger">Подробнее</a>
+                           class="btn btn-danger">Выбрать</a>
                     </div>
                 </div>
-
             {% endfor %}
         </div>
     </div>
