@@ -18,7 +18,12 @@
                     <p>Стоимость: {{ product_object.price }}</p>
                     <br>
                 </div>
-                <br>
+                <div class="float-right">
+                    <button class="btn  btn-danger ">
+                        <a style="color: white; text-decoration: none"
+                           href="{% url 'basket:add' product_object.pk %}">Купить</a>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

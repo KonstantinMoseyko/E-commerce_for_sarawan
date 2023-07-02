@@ -1,0 +1,31 @@
+<div class="row centered">
+    {% for reservation in basket_items %}
+        <div class="card  col-lg-4" style="width: 16rem; display: flex">
+            <img src="/media/{{ reservation.product.image }}" class="img-fluid mt-2 col-lg-offset-4" alt="Responsive image" style="height: 300px">
+            <div class="row flex-wrap form-group col-lg-sm text">
+                <div>
+                    <span class="col-form-label"><b>Категория: </b>{{ reservation.product.subcategory.category.name|title }}</span>
+                    <span class=""><b>Товар: </b>{{ reservation.product.name|title }}</span>
+                    <span class=""><b>Стоимость: </b>{{ reservation.product.price }}&nbspруб</span>
+                    <span class=""><b>Количество: </b>{{ reservation.quantity }}</span>
+                    <input type="number" name="{{ reservation.pk }}" min="0" value="{{ reservation.quantity }}">
+                </div>
+                <div>
+                    <button class="btn btn-danger btn-sm">
+                        <a style="color: white; text-decoration: none" href="{% url 'basket:remove' reservation.pk %}"
+                        class="">
+                            удалить
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% if basket_items %}
+    <div class="basket_summary text-right">
+        Всего товара {{ basket_items.0.total_quantity }} шт., общей стоимостью
+        {{ basket_items.0.total_cost }} руб
+    </div>
+{% endif %}
